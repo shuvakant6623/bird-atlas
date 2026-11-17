@@ -6,7 +6,9 @@ import viteLogo from "./assets/vite.svg";
 import { MobileBottomNav } from "./components/layout/MobileBottomNav";
 import { SiteHeader } from "./components/layout/SiteHeader";
 import "./App.css";
-
+import { birds } from "./features/birds/data/birds";
+import { BirdCard } from "./features/birds/components/BirdCard";
+import { PageContainer } from "./components/layout/PageContainer";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -14,6 +16,22 @@ function App() {
     <>
       {/* Application navigation */}
       <SiteHeader />
+      <section>
+        <PageContainer>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "24px",
+              paddingBlock: "40px",
+            }}
+          >
+            {birds.map((bird) => (
+              <BirdCard key={bird.id} bird={bird} />
+            ))}
+          </div>
+        </PageContainer>
+      </section>
       <MobileBottomNav />
 
       {/* Temporary Vite starter content */}
